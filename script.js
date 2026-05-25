@@ -1,5 +1,5 @@
-// PHASE 6 FINAL BUILD NOTE:
-// This final build is ready for GitHub Pages. Keep the spreadsheet and Drive assets shared as 'Anyone with the link can view' so the public website can fetch CSV data and images.
+// PHASE 6 FINAL BUILD NOTE + DRIVE IMAGE FIX:
+// This final build is ready for GitHub Pages. Keep the spreadsheet and Drive assets shared as 'Anyone with the link can view' so the public website can fetch CSV data and images. Drive image URLs are converted to the stable Google Drive thumbnail endpoint.
 const SPREADSHEET_ID = '15o08L1BaK0SfPdQzJu8uTCypflCAFjvPpU3XWXaNSdY';
 
 const SHEETS = {
@@ -507,21 +507,47 @@ function imageTag(url, alt, className = '') {
   const src = driveImage(url);
   const safeAlt = escapeAttribute(alt || 'R&D portfolio image');
   const placeholder = placeholderImage(alt || 'GEF R&D');
-  return `<img class="${className}" src="${escapeAttribute(src || placeholder)}" alt="${safeAlt}" loading="lazy" onerror="this.onerror=null;this.src='${placeholder}';" />`;
+  return `<img class="${className}" src="${escapeAttribute(src || placeholder)}" alt="${safeAlt}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${placeholder}';" />`;
 }
 
 function driveImage(url) {
   const cleaned = clean(url);
   if (!cleaned || cleaned.toLowerCase().startsWith('paste ')) return '';
-  const fileMatch = cleaned.match(/\/file\/d\/([^/]+)/);
-  const idMatch = cleaned.match(/[?&]id=([^&]+)/);
-  const id = fileMatch?.[1] || idMatch?.[1];
-  if (id) return `https://drive.google.com/uc?export=view&id=${id}`;
+
+  const id = getDriveFileId(cleaned);
+  if (id) {
+    // Google Drive sharing links such as /file/d/.../view do not work reliably
+    // inside <img> tags on GitHub Pages. The thumbnail endpoint is the most
+    // stable public-image URL when the file is shared as Anyone with the link.
+    return `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1200`;
+  }
+
   return cleaned;
 }
 
+function getDriveFileId(url) {
+  const cleaned = clean(url);
+  if (!cleaned) return '';
+
+  const patterns = [
+    /\/file\/d\/([^/?#]+)/,
+    /[?&]id=([^&#]+)/,
+    /uc\?[^#]*[?&]?id=([^&#]+)/,
+    /thumbnail\?[^#]*[?&]?id=([^&#]+)/
+  ];
+
+  for (const pattern of patterns) {
+    const match = cleaned.match(pattern);
+    if (match?.[1]) return decodeURIComponent(match[1]);
+  }
+
+  return '';
+}
+
 function normalizeLink(url) {
-  return driveImage(url) || url;
+  const cleaned = clean(url);
+  if (!cleaned || cleaned.toLowerCase().startsWith('paste ')) return '';
+  return cleaned;
 }
 
 function placeholderImage(label) {

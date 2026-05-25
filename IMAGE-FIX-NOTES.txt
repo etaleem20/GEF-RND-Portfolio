@@ -1,0 +1,34 @@
+GEF R&D Portfolio — Google Drive Image Fix Notes
+
+Problem found:
+The earlier code converted Google Drive file links into this format:
+https://drive.google.com/uc?export=view&id=FILE_ID
+
+On GitHub Pages this format often fails inside <img> tags, especially for Drive-hosted PNG/JPG files. The browser may receive a Google Drive viewer/redirect page instead of a clean image response, so logo and photos do not display.
+
+Fix applied:
+All Google Drive image links are now converted to the more reliable thumbnail endpoint:
+https://drive.google.com/thumbnail?id=FILE_ID&sz=w1200
+
+This works for these sheet formats:
+https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+https://drive.google.com/open?id=FILE_ID
+https://drive.google.com/uc?id=FILE_ID
+https://drive.google.com/thumbnail?id=FILE_ID
+
+Important Drive permission rule:
+Each image file must be shared as:
+Anyone with the link → Viewer
+
+Confirmed from connected Google Drive:
+The logo file GEF Logo.png is shared publicly as Anyone with the link / reader, so the code issue was the main cause for logo display failure.
+
+Other fix:
+PDF/folder/action links are no longer converted into image URLs. Only image fields are converted for <img> tags.
+
+Files updated:
+script.js
+IMAGE-FIX-NOTES.txt
+
+Upload instructions:
+Replace the existing website files in GitHub with this ZIP contents, especially script.js.
