@@ -1,0 +1,79 @@
+DEPLOYMENT GUIDE — GEF R&D Portfolio Website
+
+Goal:
+Make the website live using GitHub Pages.
+
+Step 1 — Prepare GitHub Repository
+1. Create or open the GitHub repository for the website.
+2. Open the repository's main branch.
+3. Upload these files to the repository root:
+   - index.html
+   - style.css
+   - script.js
+   - assets folder
+   - README.txt
+
+Important:
+Do not upload the full folder as a folder inside the repository root.
+The index.html file must be directly visible in the root.
+
+Step 2 — Enable GitHub Pages
+1. Open repository Settings.
+2. Go to Pages.
+3. Under Build and deployment, select:
+   Source: Deploy from a branch
+   Branch: main
+   Folder: /root
+4. Save.
+
+Step 3 — Open Live URL
+GitHub will provide a Pages URL. Open it in browser.
+The website should load with:
+- Header and navigation
+- Hero section
+- About R&D
+- Team cards
+- Digital Projects
+- Other sections with Active data or clean empty messages
+
+Step 4 — Google Sheet Test
+1. Open the connected Google Sheet.
+2. Change one Draft row to Active.
+3. Refresh the live website.
+4. Confirm the item appears.
+5. Change it back to Draft/Hidden if you do not want it visible.
+
+Step 5 — Drive Image Test
+1. Add a Google Drive image link in the correct Sheet column.
+2. Set file permission to: Anyone with the link can view.
+3. Refresh website.
+4. Confirm image appears.
+
+Step 6 — WhatsApp Test
+1. Set at least one publication row to Active.
+2. Add Title Name, Price, Availability.
+3. Open website and click Order on WhatsApp.
+4. Confirm WhatsApp opens with this message format:
+   Hello R&D Team, I am interested in this publication/title: [Title Name]
+
+Step 7 — Mobile Test
+Open the website on mobile and test:
+- Menu opens and closes
+- Cards stack properly
+- Images fit inside cards
+- Publication search/filter controls work
+- WhatsApp button opens correctly
+
+Step 8 — Public Access Test
+Open the website in an incognito/private browser window.
+Confirm:
+- Website loads
+- Sheet data appears
+- Drive images appear
+- Buttons open correct links
+
+If data does not load:
+- Check Google Sheet sharing permission
+- Check tab names
+- Check Status column value is exactly Active
+- Check internet/browser console for errors

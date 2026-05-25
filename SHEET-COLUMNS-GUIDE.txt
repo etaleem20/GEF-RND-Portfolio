@@ -1,0 +1,32 @@
+SHEET COLUMNS GUIDE
+GEF R&D Portfolio Website
+
+Settings
+Field | Value | Notes | Status
+
+Team
+Name | Designation | Education | Short Bio | Main Responsibility | Photo URL | Display Order | Status | Photo File Name / Notes
+
+Development
+Title | Category | Short Description | Image URL | PDF / Folder URL | Button Text | Display Order | Status | Notes
+
+Digital Projects
+Project Title | Category | Short Description | Image URL | Project Link | Button Text | Display Order | Status | Notes
+
+Training
+Training Title | Training Type | Audience | Short Description | Image URL | PDF / Folder URL | Button Text | Date / Session | Display Order | Status
+
+Competitions
+Competition Title | Year | Category | Participants | Short Description | Image URL | Result PDF URL | Gallery / Folder URL | Button Text | Display Order | Status
+
+Publications
+Title Name | Category | Class / Level | Short Description | Cover Image URL | Price | PDF Preview URL | Order / Contact Link | Availability | Button Text | Display Order | Status | WhatsApp Auto Message Title | Notes
+
+Resources
+Resource Title | Category | Short Description | File Type | PDF / Folder URL | Image URL | Button Text | Display Order | Status
+
+Gallery
+Image Title | Category | Image URL | Short Caption | Display Order | Status | Notes
+
+Contact
+Field | Value | Notes | Status

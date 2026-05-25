@@ -1,0 +1,67 @@
+PHASE 5 TESTING CHECKLIST
+
+GitHub Pages readiness:
+[ ] index.html is in repository root
+[ ] style.css is in repository root
+[ ] script.js is in repository root
+[ ] assets folder exists
+[ ] No broken local file paths
+
+Website load test:
+[ ] Header appears
+[ ] Navigation appears
+[ ] Hero section appears
+[ ] About section appears
+[ ] Team section appears
+[ ] Footer appears
+
+Google Sheet test:
+[ ] Settings tab loads
+[ ] Team tab loads
+[ ] Only Active rows appear
+[ ] Draft rows stay hidden
+[ ] Hidden rows stay hidden
+[ ] Display Order is respected
+
+Google Drive image test:
+[ ] Logo loads from Drive or fallback appears
+[ ] Team photos load from Drive or placeholder appears
+[ ] Missing images show clean placeholder
+
+Core section test:
+[ ] About R&D works
+[ ] Team works
+[ ] Development Work works
+[ ] Digital Projects works
+[ ] Training works
+[ ] Competitions works
+[ ] Publications & Educational Titles works
+[ ] Resource Library works
+[ ] Gallery works
+[ ] Contact works
+
+Publication interaction test:
+[ ] Search works
+[ ] Category filter works
+[ ] Availability filter works
+[ ] Price appears
+[ ] Availability label appears
+[ ] Order on WhatsApp appears only in Publications
+[ ] WhatsApp message includes selected title
+
+Mobile test:
+[ ] Hamburger menu opens
+[ ] Hamburger menu closes after link click
+[ ] Cards stack cleanly
+[ ] Text remains readable
+[ ] Buttons are easy to tap
+[ ] No horizontal scrolling
+
+Public access test:
+[ ] Website works in incognito/private window
+[ ] Google Sheet data works for public visitors
+[ ] Drive images work for public visitors
+[ ] WhatsApp link works for public visitors
+
+Final Phase 5 result:
+[ ] Ready for Phase 6 final documentation

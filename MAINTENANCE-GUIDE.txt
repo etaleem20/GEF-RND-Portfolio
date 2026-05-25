@@ -1,0 +1,45 @@
+MAINTENANCE GUIDE
+GEF R&D Portfolio Website
+
+DAILY / REGULAR CONTENT WORK
+Use Google Sheets for content.
+Use Google Drive for files and images.
+Do not edit index.html, style.css, or script.js for routine updates.
+
+WHEN ADDING NEW CONTENT
+1. Add data in the correct Google Sheet tab.
+2. Add Drive file link if needed.
+3. Set Status = Active only when ready to publish.
+4. Refresh the website.
+5. Test in mobile view.
+
+WHEN A SECTION LOOKS EMPTY
+Check whether rows are Draft or Hidden.
+Only Active rows are shown.
+
+WHEN AN IMAGE DOES NOT SHOW
+Check these points:
+1. The file link is pasted in the correct image column.
+2. Google Drive sharing is Anyone with the link can view.
+3. The link is a file link, not a private local path.
+4. The file is an image format such as JPG, JPEG, PNG, or WEBP.
+
+WHEN A PDF / FOLDER BUTTON DOES NOT WORK
+Check that the PDF or folder URL is correct and public.
+
+WHEN WHATSAPP ORDER DOES NOT OPEN
+Check Contact tab:
+WhatsApp Base Link should be:
+https://wa.me/923331211244
+
+The website adds the publication title automatically.
+
+WHEN WEBSITE DOES NOT UPDATE IMMEDIATELY
+Try:
+1. Hard refresh browser.
+2. Open in incognito/private window.
+3. Wait a few minutes for GitHub Pages cache.
+4. Check Sheet sharing.
+
+SAFE EDITING RULE
+Before making major changes, download a backup of the current website ZIP and keep a copy of the Google Sheet.

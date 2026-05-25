@@ -1,0 +1,54 @@
+TROUBLESHOOTING
+GEF R&D Portfolio Website
+
+PROBLEM: Website opens but data is not showing.
+Possible causes:
+- Google Sheet is not public enough for website fetch.
+- Row Status is not Active.
+- Column heading was changed.
+- Internet/browser blocked Google Sheet CSV access.
+
+Solution:
+- Keep Sheet sharing as Anyone with the link can view.
+- Keep exact column headings.
+- Set required rows to Active.
+- Try incognito/private window.
+
+PROBLEM: Team photos are not showing.
+Solution:
+- Check Photo URL column.
+- Check Drive sharing.
+- Use proper Drive file link.
+
+PROBLEM: Logo is not showing.
+Solution:
+- Check Settings tab > Logo URL.
+- Confirm logo Drive file is public.
+
+PROBLEM: Publications are not visible.
+Solution:
+- Open Publications tab.
+- Set Status = Active.
+- Add Title Name, Price, Availability, and Display Order.
+
+PROBLEM: WhatsApp order message is wrong.
+Solution:
+- Check Title Name in Publications tab.
+- The website uses Title Name to generate message.
+- Check Contact tab for WhatsApp Base Link.
+
+PROBLEM: GitHub Pages shows 404.
+Solution:
+- Ensure index.html is in repository root.
+- Ensure GitHub Pages source is main branch / root.
+- Wait a few minutes after saving Pages settings.
+
+PROBLEM: Styling is missing.
+Solution:
+- Ensure style.css is uploaded in root with index.html.
+- Do not rename style.css.
+
+PROBLEM: Functionality is missing.
+Solution:
+- Ensure script.js is uploaded in root with index.html.
+- Do not rename script.js.

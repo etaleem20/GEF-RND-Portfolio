@@ -1,0 +1,60 @@
+FINAL HANDOVER
+GEF R&D Portfolio Website
+
+PROJECT NAME
+GEF Research & Development Department Portfolio Website
+
+WEBSITE TYPE
+Public English portfolio website.
+
+FINAL MODEL
+GitHub Pages + Google Sheets + Google Drive
+
+FINAL STATUS
+Phase 6 Final package is ready for GitHub Pages deployment.
+
+WHAT IS COMPLETE
+- Home / Hero
+- About R&D
+- R&D Team
+- Development Work
+- Digital Projects
+- Training & Capacity Building
+- Competitions
+- Publications & Educational Titles
+- Resource Library
+- Gallery
+- Contact
+- Google Sheet dynamic data structure
+- Google Drive image conversion support
+- Active/Draft/Hidden control
+- Display Order sorting
+- WhatsApp order system for publications
+- Search/filter for publications
+- Mobile responsive design
+- GitHub Pages deployment readiness
+- Maintenance documentation
+- Data update documentation
+- Troubleshooting guide
+
+WHAT THE USER MUST DO NEXT
+1. Extract this ZIP.
+2. Upload all files to GitHub repository root.
+3. Enable GitHub Pages from main branch / root.
+4. Keep Google Sheet public as Anyone with the link can view.
+5. Keep Google Drive public files/folders as Anyone with the link can view.
+6. Change Draft rows to Active when ready to publish content.
+
+IMPORTANT CURRENT DATA NOTE
+Some Sheet rows are still Draft in these tabs:
+Development
+Training
+Competitions
+Publications
+Resources
+Gallery
+
+These will not appear publicly until their Status is changed to Active.
+
+FINAL ZIP NAME
+GEF-RND-Portfolio-Phase-6-Final.zip

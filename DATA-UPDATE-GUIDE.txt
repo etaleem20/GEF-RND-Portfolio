@@ -1,0 +1,161 @@
+DATA UPDATE GUIDE
+GEF R&D Portfolio Website
+
+GENERAL RULE
+The website is controlled through Google Sheets and Google Drive.
+You should not edit code for normal content updates.
+
+STATUS RULE
+Active = visible on website
+Draft = hidden from website
+Hidden = hidden from website
+
+DISPLAY ORDER RULE
+Use Display Order numbers to control the order of cards.
+Example:
+1 appears before 2
+2 appears before 3
+
+GOOGLE DRIVE RULE
+For images, PDFs, covers, and folders:
+1. Upload the file to the correct Google Drive folder.
+2. Right-click the file or folder.
+3. Click Share.
+4. Set access to: Anyone with the link can view.
+5. Copy the link.
+6. Paste the link into the correct Google Sheet column.
+
+HOW TO UPDATE SITE TITLE / HERO
+Open Settings tab.
+Update:
+Site Title
+Hero Heading
+Hero Tagline
+Short Intro
+Logo URL
+Primary Button Text
+Secondary Button Text
+Keep Status = Active.
+
+HOW TO ADD A TEAM MEMBER
+Open Team tab.
+Add a new row with:
+Name
+Designation
+Education
+Short Bio
+Main Responsibility
+Photo URL
+Display Order
+Status = Active
+
+HOW TO HIDE A TEAM MEMBER
+Change Status from Active to Draft or Hidden.
+
+HOW TO ADD DEVELOPMENT WORK
+Open Development tab.
+Add:
+Title
+Category
+Short Description
+Image URL
+PDF / Folder URL
+Button Text
+Display Order
+Status = Active
+
+HOW TO ADD DIGITAL PROJECT
+Open Digital Projects tab.
+Add:
+Project Title
+Category
+Short Description
+Image URL
+Project Link
+Button Text
+Display Order
+Status = Active
+
+HOW TO ADD TRAINING ITEM
+Open Training tab.
+Add:
+Training Title
+Training Type
+Audience
+Short Description
+Image URL
+PDF / Folder URL
+Button Text
+Date / Session
+Display Order
+Status = Active
+
+HOW TO ADD COMPETITION
+Open Competitions tab.
+Add:
+Competition Title
+Year
+Category
+Participants
+Short Description
+Image URL
+Result PDF URL
+Gallery / Folder URL
+Button Text
+Display Order
+Status = Active
+
+HOW TO ADD PUBLICATION / EDUCATIONAL TITLE
+Open Publications tab.
+Add:
+Title Name
+Category
+Class / Level
+Short Description
+Cover Image URL
+Price
+PDF Preview URL
+Availability
+Display Order
+Status = Active
+
+The website automatically creates the Order on WhatsApp button from the Title Name.
+You do not need to manually create a different WhatsApp link for every publication.
+
+HOW TO ADD RESOURCE
+Open Resources tab.
+Add:
+Resource Title
+Category
+Short Description
+File Type
+PDF / Folder URL
+Image URL
+Button Text
+Display Order
+Status = Active
+
+HOW TO ADD GALLERY IMAGE
+Open Gallery tab.
+Add:
+Image Title
+Category
+Image URL
+Short Caption
+Display Order
+Status = Active
+
+HOW TO UPDATE CONTACT
+Open Contact tab.
+Update:
+Department Name
+Organization
+Phone Number
+Email
+Office / Address
+YouTube URL
+Facebook URL
+WhatsApp Number
+WhatsApp Base Link
+Default Order Message
+Keep important rows Active.

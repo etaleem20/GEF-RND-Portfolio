@@ -1,0 +1,29 @@
+GITHUB PAGES QUICK START
+
+Upload method:
+1. Extract this ZIP.
+2. Open the extracted folder.
+3. Select all files and folders inside it.
+4. Upload them to the root of your GitHub repository.
+
+Correct repository root should show:
+index.html
+style.css
+script.js
+assets
+README.txt
+DEPLOYMENT-GUIDE.txt
+TESTING-CHECKLIST.txt
+
+GitHub Pages setting:
+Settings > Pages > Deploy from a branch > main > /root > Save
+
+Common mistake:
+Wrong:
+Repository root contains only one folder named GEF-RND-Portfolio-Phase-5.
+
+Correct:
+Repository root directly contains index.html, style.css, script.js, and assets folder.
+
+After deployment:
+Wait for GitHub Pages to generate the live URL, then open the website and follow TESTING-CHECKLIST.txt.
