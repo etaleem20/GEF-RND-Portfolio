@@ -29,21 +29,6 @@
   <footer class="site-footer"><div class="container footer-inner"><p>© <span id="year"></span> Ghazali Education Foundation — Research & Development Department.</p></div></footer>
   <script src="script.js?v=20260525-3"></script>
   <script src="portfolio-enhance.js?v=20260525-3"></script>
-  <script>
-  window.addEventListener('load',function(){
-    window.openFolderSlideshowFromPage=function(folderId){
-      var override=(typeof folderOverrideImages==='function')?folderOverrideImages(folderId):[];
-      var box=document.querySelector('.folder-showcase[data-folder-id="'+folderId+'"]');
-      var imgs=override&&override.length?override:(box?[].slice.call(box.querySelectorAll('.showcase-thumb')).map(function(x){return x.src;}):[]);
-      if(!imgs.length)return;
-      var title=(box&&box.querySelector('h3')?box.querySelector('h3').textContent.trim():'Portfolio Slideshow');
-      var desc=(box&&box.querySelector('p')?box.querySelector('p').textContent.trim():'');
-      mediaItems=imgs.map(function(src,i){return{src:src,title:title,caption:desc+' — Image '+(i+1)+' of '+imgs.length};});
-      mediaIndex=0;
-      var m=document.getElementById('mediaModal');if(m){m.classList.add('is-open');m.setAttribute('aria-hidden','false');}
-      showMedia(0);clearInterval(mediaTimer);mediaTimer=setInterval(function(){showMedia(mediaIndex+1)},4500);
-    };
-  });
-  </script>
+  <script src="digital-section-final.js?v=20260525-1"></script>
 </body>
 </html>
