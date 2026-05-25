@@ -1,26 +1,94 @@
-const FOLDER_MEDIA={
- '1BhBZrLhUP7njMcno0tf4LsR8k0P4Xh8S':['1ie05txKtu6CwSvYFbHbRZrIqpxXMYILQ','1KRsrC-dghPy67XBR7oEqvbMOIdbHmkH1','148GDlPZWui_07ZqKUAyhUSNAsXsRxT6J','14qXYbZGLDnsW1sejnIBF9ozMC3InDlD-'],
- '1gS7PyB1a6uNKclmt0PxZO6mZrQM-X0MX':['1JGqqpK2gS1SeMREPyppO-dpBo0M1bdba','1NKtf1MBx-p4wu0GUK_2ATIcd3rWMo-L5','1Q3llvotrjPgZXzCL1YNaggjcnQ50xUSm','1wfLf0Jfe2qDyIQKalDR-Q9PKQ8NddETZ'],
- '1dJim5Vugv2Fvj3p2KMvYzdSSdAs4Qw_b':['154Ye-yq4HJTvLc054zrvJsXmbav1_OgV','1V2TM783wB7ZuVnttFBNyd3o3xhxi9ayW','1f8YCm_1LoAPPi3hZO1YdVThSHu1n4RJw','1YzTX0I4gm9KHLI4MIiOb-WVGxDJ9VFqH'],
- '1tc4hTALKAl0AXTFrPY8k_XSbSwDmOIUx':['1ddtUB2yPRXiw7fw5PqmoyzWgbZ0Z6Dpq','1vErLfzustHfkNrOykLIMXBQr4vRubm_i','1Z9Dj9aCN0Xgwg57GI1ijJWZ0mFmh2vtG','10jZHs91dpN6xJoy1XhlWQrR3h-3OjQA1'],
- '1jLq0b3orkXAH06bSejHUExTwIBCc0Rph':[]
-};
-const FOLDER_LABELS={
- '1BhBZrLhUP7njMcno0tf4LsR8k0P4Xh8S':{name:'Academic Development Portfolio',cat:'Academic Development',desc:'Calendars, study-circle material, manuals, planning resources, and school-support visuals prepared by the R&D Department.'},
- '1gS7PyB1a6uNKclmt0PxZO6mZrQM-X0MX':{name:'Educational Video Channel',cat:'YouTube Learning Media',desc:'A visual showcase of educational video thumbnails, learning topics, science lessons, digital literacy content, and student-support media.'},
- '1dJim5Vugv2Fvj3p2KMvYzdSSdAs4Qw_b':{name:'E-Taleem Social Media Posts',cat:'Facebook & Social Campaigns',desc:'Selected E-Taleem posts, awareness designs, announcements, learning campaigns, and official social media visuals.'},
- '1tc4hTALKAl0AXTFrPY8k_XSbSwDmOIUx':{name:'Student Competitions Portfolio',cat:'Student Achievement',desc:'Competition posters, result announcements, award highlights, and creative student-achievement visuals organized as a gallery.'}
-};
 let mediaItems=[],mediaIndex=0,mediaTimer=null;
-document.addEventListener('DOMContentLoaded',()=>setTimeout(enhancePortfolio,1500));
-function enhancePortfolio(){document.querySelectorAll('.generated-card').forEach(x=>x.remove());addDigitalCategoryCards();makeShowcase('developmentGrid','1BhBZrLhUP7njMcno0tf4LsR8k0P4Xh8S',false);makeShowcase('digitalGrid','1gS7PyB1a6uNKclmt0PxZO6mZrQM-X0MX',false);makeShowcase('digitalGrid','1dJim5Vugv2Fvj3p2KMvYzdSSdAs4Qw_b',true);makeShowcase('competitionsGrid','1tc4hTALKAl0AXTFrPY8k_XSbSwDmOIUx',false);bindSlideshows();setupModal();}
-function addDigitalCategoryCards(){let grid=document.getElementById('digitalGrid');if(!grid||grid.querySelector('.digital-category-grid'))return;let wrap=document.createElement('div');wrap.className='digital-category-grid';wrap.innerHTML=mini('01','YouTube Channel','Educational videos, thumbnails, and learning-support media.')+mini('02','Bano Qabil','Skill-development and digital learning visuals for learners.')+mini('03','STEM Education','Science, technology, creativity, and problem-solving learning content.')+mini('04','Digital Literacy','Responsible digital use, online safety, and practical digital skills.');grid.prepend(wrap)}
-function mini(n,t,d){return '<div class="digital-mini-card"><span class="num">'+n+'</span><h3>'+t+'</h3><p>'+d+'</p></div>'}
-function makeShowcase(gridId,folderId,rev){let grid=document.getElementById(gridId),info=FOLDER_LABELS[folderId],ids=FOLDER_MEDIA[folderId]||[];if(!grid||!info||document.querySelector('.folder-showcase[data-folder-id="'+folderId+'"]')||!ids.length)return;[...grid.querySelectorAll('.card')].filter(card=>card.querySelector('a[href*="'+folderId+'"]')).forEach(card=>card.remove());let a=ids.map((id,i)=>'<img class="showcase-thumb '+(i==0?'is-active':'')+'" src="https://drive.google.com/thumbnail?id='+id+'&sz=w1200" alt="'+esc(info.name)+'">').join('');let box=document.createElement('article');box.className='folder-showcase'+(rev?' is-reverse':'');box.dataset.folderId=folderId;box.innerHTML='<div class="showcase-media">'+a+'</div><div class="showcase-copy"><span class="label">'+esc(info.cat)+'</span><h3>'+esc(info.name)+'</h3><p>'+esc(info.desc)+'</p><div class="card-actions"><a class="btn primary" href="https://drive.google.com/drive/folders/'+folderId+'">View Slideshow</a></div></div>';grid.appendChild(box);let imgs=[...box.querySelectorAll('.showcase-thumb')];let n=0;if(imgs.length>1)setInterval(()=>{imgs[n].classList.remove('is-active');n=(n+1)%imgs.length;imgs[n].classList.add('is-active')},3500)}
-function bindSlideshows(){document.querySelectorAll('a[href*="drive.google.com/drive/folders/"]').forEach(a=>{let id=getFolderId(a.href);if(!id||a.dataset.ready)return;a.dataset.ready='1';a.removeAttribute('target');a.textContent='View Slideshow';a.onclick=e=>{e.preventDefault();openFolderSlideshow(id)}})}
+document.addEventListener('DOMContentLoaded',()=>setTimeout(enhancePortfolio,1700));
+function enhancePortfolio(){
+  addDigitalCategoryCardsFromSheet();
+  buildFolderShowcasesFromSheet('developmentGrid',false);
+  buildFolderShowcasesFromSheet('digitalGrid',true);
+  buildFolderShowcasesFromSheet('trainingGrid',false);
+  buildFolderShowcasesFromSheet('competitionsGrid',false);
+  bindSlideshows();
+  setupModal();
+}
+function addDigitalCategoryCardsFromSheet(){
+  const grid=document.getElementById('digitalGrid');
+  if(!grid||grid.querySelector('.digital-category-grid'))return;
+  const cards=[...grid.querySelectorAll(':scope > .card')];
+  if(!cards.length)return;
+  const wrap=document.createElement('div');
+  wrap.className='digital-category-grid';
+  wrap.innerHTML=cards.slice(0,4).map((card,i)=>{
+    const h=txt(card.querySelector('h3'))||'Digital Project';
+    const p=txt(card.querySelector('p'))||'Digital learning and media work managed by R&D.';
+    return '<div class="digital-mini-card"><span class="num">'+String(i+1).padStart(2,'0')+'</span><h3>'+esc(h)+'</h3><p>'+esc(p)+'</p></div>';
+  }).join('');
+  grid.prepend(wrap);
+}
+function buildFolderShowcasesFromSheet(gridId,alternate){
+  const grid=document.getElementById(gridId);
+  if(!grid)return;
+  const cards=[...grid.querySelectorAll(':scope > .card')];
+  if(!cards.length)return;
+  const groups=new Map();
+  cards.forEach(card=>{
+    const folderLink=[...card.querySelectorAll('a[href*="drive.google.com/drive/folders/"]')][0];
+    if(!folderLink)return;
+    const folderId=getFolderId(folderLink.href);
+    if(!folderId)return;
+    if(!groups.has(folderId))groups.set(folderId,{folderId,cards:[],images:[],title:'',category:'',desc:'',url:folderLink.href});
+    const g=groups.get(folderId);
+    g.cards.push(card);
+    const title=txt(card.querySelector('h3'));
+    const category=txt(card.querySelector('.meta span'));
+    const desc=txt(card.querySelector('p'));
+    const img=card.querySelector('img');
+    if(title&&!g.title)g.title=sectionTitleFromGrid(gridId,title,groups.size);
+    if(category&&!g.category)g.category=category;
+    if(desc&&!g.desc)g.desc=desc;
+    if(img&&img.src&&!img.src.startsWith('data:')&&!g.images.includes(img.src))g.images.push(img.src);
+  });
+  if(!groups.size)return;
+  groups.forEach((g,idx)=>{
+    if(document.querySelector('.folder-showcase[data-folder-id="'+g.folderId+'"]'))return;
+    g.cards.forEach(card=>card.remove());
+    const box=document.createElement('article');
+    box.className='folder-showcase'+(alternate&&idx%2===1?' is-reverse':'');
+    box.dataset.folderId=g.folderId;
+    const imgs=g.images.length?g.images.map((src,i)=>'<img class="showcase-thumb '+(i===0?'is-active':'')+'" src="'+escAttr(src)+'" alt="'+escAttr(g.title||'Portfolio')+'">').join(''):'<div class="showcase-empty">Media will appear here after adding active Drive image links in the Google Sheet.</div>';
+    box.innerHTML='<div class="showcase-media">'+imgs+'</div><div class="showcase-copy"><span class="label">'+esc(g.category||sectionLabel(gridId))+'</span><h3>'+esc(g.title||sectionLabel(gridId))+'</h3><p>'+esc(g.desc||'Folder-based portfolio media managed through Google Sheet and Google Drive. Add more active rows in the Sheet to expand this showcase.')+'</p><div class="card-actions"><a class="btn primary" href="'+escAttr(g.url)+'">View Slideshow</a></div></div>';
+    grid.appendChild(box);
+    rotateShowcase(box);
+  });
+}
+function sectionTitleFromGrid(gridId,fallback,count){
+  if(gridId==='developmentGrid')return count===1?'Academic Development Portfolio':fallback;
+  if(gridId==='digitalGrid')return fallback;
+  if(gridId==='trainingGrid')return count===1?'Training Portfolio':fallback;
+  if(gridId==='competitionsGrid')return count===1?'Student Competitions Portfolio':fallback;
+  return fallback;
+}
+function sectionLabel(gridId){return({developmentGrid:'Academic Development',digitalGrid:'Digital Media',trainingGrid:'Training & Capacity Building',competitionsGrid:'Student Achievement'}[gridId]||'Portfolio')}
+function rotateShowcase(box){const imgs=[...box.querySelectorAll('.showcase-thumb')];let n=0;if(imgs.length>1)setInterval(()=>{imgs[n].classList.remove('is-active');n=(n+1)%imgs.length;imgs[n].classList.add('is-active')},3500)}
+function bindSlideshows(){document.querySelectorAll('a[href*="drive.google.com/drive/folders/"]').forEach(a=>{let id=getFolderId(a.href);if(!id||a.dataset.ready)return;a.dataset.ready='1';a.removeAttribute('target');a.textContent='View Slideshow';a.onclick=e=>{e.preventDefault();openFolderSlideshowFromPage(id)}})}
 function setupModal(){let c=document.getElementById('mediaClose');if(c){c.innerHTML='&times;';c.onclick=closeMedia}let p=document.getElementById('mediaPrev');if(p)p.onclick=()=>showMedia(mediaIndex-1);let n=document.getElementById('mediaNext');if(n)n.onclick=()=>showMedia(mediaIndex+1);let m=document.getElementById('mediaModal');if(m)m.onclick=e=>{if(e.target===m)closeMedia()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMedia()})}
-function getFolderId(url){let m=String(url||'').match(/folders\/([^/?#]+)/);return m?m[1]:''}
-function openFolderSlideshow(folderId){let ids=FOLDER_MEDIA[folderId]||[],info=FOLDER_LABELS[folderId]||{name:'Portfolio Slideshow',desc:''};if(!ids.length)return;mediaItems=ids.map((id,i)=>({src:'https://drive.google.com/thumbnail?id='+id+'&sz=w1600',title:info.name,caption:info.desc+' — Image '+(i+1)+' of '+ids.length}));mediaIndex=0;let m=document.getElementById('mediaModal');if(m){m.classList.add('is-open');m.setAttribute('aria-hidden','false')}showMedia(0);clearInterval(mediaTimer);mediaTimer=setInterval(()=>showMedia(mediaIndex+1),4500)}
+function openFolderSlideshowFromPage(folderId){
+  const box=document.querySelector('.folder-showcase[data-folder-id="'+folderId+'"]');
+  let imgs=[];
+  if(box)imgs=[...box.querySelectorAll('.showcase-thumb')].map(x=>x.src);
+  if(!imgs.length){
+    const cards=[...document.querySelectorAll('a[href*="'+folderId+'"]').map?.(()=>[])||[]];
+  }
+  if(!imgs.length)return;
+  const title=txt(box?.querySelector('h3'))||'Portfolio Slideshow';
+  const desc=txt(box?.querySelector('p'))||'';
+  mediaItems=imgs.map((src,i)=>({src,title,caption:desc+' — Image '+(i+1)+' of '+imgs.length}));
+  mediaIndex=0;
+  let m=document.getElementById('mediaModal');
+  if(m){m.classList.add('is-open');m.setAttribute('aria-hidden','false')}
+  showMedia(0);clearInterval(mediaTimer);mediaTimer=setInterval(()=>showMedia(mediaIndex+1),4500);
+}
 function showMedia(i){if(!mediaItems.length)return;mediaIndex=(i+mediaItems.length)%mediaItems.length;let item=mediaItems[mediaIndex];let img=document.getElementById('mediaSlideImage');if(img)img.src=item.src;let t=document.getElementById('mediaSlideTitle');if(t)t.textContent=item.title;let cap=document.getElementById('mediaSlideCaption');if(cap)cap.textContent=item.caption;let count=document.getElementById('mediaCounter');if(count)count.textContent=(mediaIndex+1)+' / '+mediaItems.length}
 function closeMedia(){let m=document.getElementById('mediaModal');if(m){m.classList.remove('is-open');m.setAttribute('aria-hidden','true')}clearInterval(mediaTimer)}
+function getFolderId(url){let m=String(url||'').match(/folders\/([^/?#]+)/);return m?m[1]:''}
+function txt(el){return String(el?.textContent||'').trim()}
 function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function escAttr(s){return esc(s).replace(/`/g,'&#096;')}
