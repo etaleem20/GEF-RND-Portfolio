@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Public portfolio website for Ghazali Education Foundation — Research & Development Department." />
   <title>GEF Research & Development Department</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260525-2" />
-  <link rel="stylesheet" href="portfolio-fixes.css?v=20260525-2" />
+  <link rel="stylesheet" href="style.css?v=20260525-3" /><link rel="stylesheet" href="portfolio-fixes.css?v=20260525-3" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -29,7 +27,23 @@
   </main>
   <div class="media-modal" id="mediaModal" aria-hidden="true" role="dialog" aria-label="Portfolio media slideshow"><div class="media-modal-panel"><button class="media-close" id="mediaClose" type="button" aria-label="Close slideshow">×</button><div class="media-stage"><img id="mediaSlideImage" alt="Portfolio slideshow image" /><button class="media-nav prev" id="mediaPrev" type="button" aria-label="Previous image">‹</button><button class="media-nav next" id="mediaNext" type="button" aria-label="Next image">›</button></div><div class="media-info"><h3 id="mediaSlideTitle">Media Gallery</h3><p id="mediaSlideCaption"></p><span id="mediaCounter"></span></div></div></div>
   <footer class="site-footer"><div class="container footer-inner"><p>© <span id="year"></span> Ghazali Education Foundation — Research & Development Department.</p></div></footer>
-  <script src="script.js?v=20260525-2"></script>
-  <script src="portfolio-enhance.js?v=20260525-2"></script>
+  <script src="script.js?v=20260525-3"></script>
+  <script src="portfolio-enhance.js?v=20260525-3"></script>
+  <script>
+  window.addEventListener('load',function(){
+    window.openFolderSlideshowFromPage=function(folderId){
+      var override=(typeof folderOverrideImages==='function')?folderOverrideImages(folderId):[];
+      var box=document.querySelector('.folder-showcase[data-folder-id="'+folderId+'"]');
+      var imgs=override&&override.length?override:(box?[].slice.call(box.querySelectorAll('.showcase-thumb')).map(function(x){return x.src;}):[]);
+      if(!imgs.length)return;
+      var title=(box&&box.querySelector('h3')?box.querySelector('h3').textContent.trim():'Portfolio Slideshow');
+      var desc=(box&&box.querySelector('p')?box.querySelector('p').textContent.trim():'');
+      mediaItems=imgs.map(function(src,i){return{src:src,title:title,caption:desc+' — Image '+(i+1)+' of '+imgs.length};});
+      mediaIndex=0;
+      var m=document.getElementById('mediaModal');if(m){m.classList.add('is-open');m.setAttribute('aria-hidden','false');}
+      showMedia(0);clearInterval(mediaTimer);mediaTimer=setInterval(function(){showMedia(mediaIndex+1)},4500);
+    };
+  });
+  </script>
 </body>
 </html>
