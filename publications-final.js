@@ -16,7 +16,7 @@ const PUBLICATION_COVERS=[
 {id:'1Az7X9GM8oN8MY2W7QXrqtp2O2mPw99wu',title:'سمر پیک',category:'سمر پیک',level:'کے سی'},
 {id:'11A1h2QeE39spk7F-Zw6rMWXrAqNNqrYc',title:'سمر پیک',category:'سمر پیک',level:'پی جی'},
 {id:'1CzT-s9k9ajHR12_hgnBwjmCWu7f23jI1',title:'Summer Pack',category:'Summer Pack',level:'PG'},
-{id:'1jkG0GWMeaQwVCBZ9WqapTmxiMFxEHKCL',title:'Educational Title',category:'Publication Cover',level:'General'}
+{id:'1jkG0GWMeaQwVCBZ9WqapTmxiMFxEHKCL',title:'تعمیر سیرت',category:'سیرت النبی ﷺ',level:'کوئز / سرگرمی'}
 ];
 const img=id=>`https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
 const safe=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
